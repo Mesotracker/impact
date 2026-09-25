@@ -1,0 +1,6 @@
+{
+  "name": "IMPACTSIM-V1",
+  "description": "Interactive 3D asteroid impact simulator with real-world map draping, ballistic physics, and volumetric blast dynamics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
