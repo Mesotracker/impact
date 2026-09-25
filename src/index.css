@@ -34,6 +34,22 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* 3D Tilted Map Stage */
+.fused-stage {
+  perspective: 1100px;
+  perspective-origin: 50% 65%;
+}
+
+.fused-map-plane {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, filter;
+}
+
+.fused-map-plane .leaflet-tile {
+  image-rendering: auto;
+}
+
 /* Custom Silver Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;

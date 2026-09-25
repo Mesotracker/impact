@@ -34,9 +34,9 @@ export default function ImpactScene({ p, r, tauRef }: Props) {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0e1320);
     const cam = new THREE.PerspectiveCamera(50, 1, 0.1, 2500);
-    cam.position.set(78, 32, 78);
+    cam.position.set(78, 38, 78);
     const ctr = new OrbitControls(cam, renderer.domElement);
-    ctr.target.set(0, 12, 0);
+    ctr.target.set(0, 0, 0);
     ctr.enableDamping = true;
     ctr.maxPolarAngle = Math.PI * 0.49;
     ctr.maxDistance = 450;
@@ -585,6 +585,8 @@ export default function ImpactScene({ p, r, tauRef }: Props) {
         (l.material as THREE.LineBasicMaterial).opacity = Rs >= R ? 0.95 : 0.45;
       });
 
+      ctr.update();
+
       tmp.set(0, burstH * 0.3, 0).project(cam);
       postU.uC.value.set(tmp.x * 0.5 + 0.5, tmp.y * 0.5 + 0.5);
       right
@@ -595,7 +597,6 @@ export default function ImpactScene({ p, r, tauRef }: Props) {
       postU.uR.value = Math.hypot((right.x - tmp.x) * 0.5 * postU.uAsp.value, (right.y - tmp.y) * 0.5);
       postU.uS.value = tau >= 0 && tmp.z < 1 ? decay * 1.5 : 0;
 
-      ctr.update();
       renderer.setRenderTarget(rt);
       renderer.render(scene, cam);
       renderer.setRenderTarget(null);
